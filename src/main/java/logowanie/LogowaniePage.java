@@ -1,5 +1,6 @@
 package logowanie;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LogowaniePage {
 
-    private final string url = "http://nowedemo.mbank.pl/login.html";
+    private String url = "http://nowedemo.mbank.pl/login.html";
 
     @FindBy(id = "userID")
     private WebElement userId;
@@ -34,7 +35,7 @@ public class LogowaniePage {
         PageFactory.initElements(driver, this);
     }
 
-    public string getUrl() {
+    public String getUrl() {
         return url;
     }
 
@@ -83,4 +84,23 @@ public class LogowaniePage {
     public void setDriver(WebDriver driver) {
         this.driver = driver;
     }
+
+    // metody
+
+    public void zaloguj(){
+
+        this.setUserId("123456");
+        this.setHaslo("123456");
+        driver.findElement(By.xpath("//*[@id=\"retail\"]/div[5]/input")).click();
+        //this.haslo.submit();
+
+    }
+
+    public void wywolajUrl(){
+
+        this.driver.get(this.url);
+
+
+    }
+
 }
