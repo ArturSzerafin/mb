@@ -22,11 +22,14 @@ public class LogowaniePage {
     @FindBy(id = "help")
     private WebElement pomoc;
 
-    @FindBy(xpath = "//*[@id=\"log-in-panel-footer-security\"]/ul")
+    @FindBy(xpath = "//*[@id=\"log-in-panel-footer-security\"]/ul[1]")
     private WebElement listaUwag;
 
     @FindBy(id = "log-in-panel-footer-contact")
     private WebElement panelKontakt;
+
+    @FindBy(xpath = "//*[@id=\"retail\"]/div[5]/input")
+    private WebElement submitHaslo;
 
     private WebDriver driver;
 
@@ -88,11 +91,11 @@ public class LogowaniePage {
     // metody
 
     public void zaloguj(){
-
+        this.getUserId().clear();
         this.setUserId("123456");
+        this.getHaslo().clear();
         this.setHaslo("123456");
-        driver.findElement(By.xpath("//*[@id=\"retail\"]/div[5]/input")).click();
-        //this.haslo.submit();
+        this.submitHaslo.click();
 
     }
 
